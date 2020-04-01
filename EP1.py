@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from random import randint
 print('INÍCIO DO JOGO')
 jogo = True
@@ -74,4 +75,4 @@ while jogo:
 
     while Point:
         possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet, Field, Any Craps, Twelve):  ')
-        
+    
