@@ -111,5 +111,6 @@ while primeira_rodada:
                     print('Os dados serão sorteados novamente!')
                     Pass_Line_Point = True
 
+
 if primeira_rodada == False:
     print('Acabou a primeira rodada!')
