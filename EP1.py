@@ -6,9 +6,9 @@ fichas = 100
 print('Você possui {0} fichas'.format(fichas))
 Pass_Line_Point = True
 
-#Primeira rodada do jogo
 
 while jogo:
+#Primeira rodada do jogo
     while primeira_rodada:
         print('Primeira rodada. Você está na fase Come Out')
         valor_apostado = int(input('Quantas fichas você quer apostar? '))
@@ -34,7 +34,7 @@ while jogo:
                     primeira_rodada= False
                     print('FIM DO JOGO')
                 else:
-                        primeira_rodada = False
+                    primeira_rodada = False
             else:
                 fichas = fichas + 3*valor_apostado
                 print('Você ganhou e agora possui {0} fichas'.format(fichas))
@@ -109,16 +109,83 @@ while jogo:
                         print('Você continua com {0} fichas'.format(fichas))
                         print('Os dados serão sorteados novamente!')
                         Pass_Line_Point = True
-
-    if primeira_rodada == False and fichas>0:
+    if primeira_rodada == False:
         print('Acabou a primeira rodada!')
-        continuar_jogando = input('Você quer continuar jogando? (Sim ou Não) ')
-        if continuar_jogando == 'Sim':
-            demais_rodadas = True
+#Demais Rodadas
+    while demais_rodadas:
+        jogando = input('Você quer continuar jogando?')
+        if jogando == 'Sim':
+            fase = input('Você quer jogar em Point ou em Come Out?  ')
+            if fase == 'Point':
+                print('Você está jogando na fase Point')
+                valor_apostado = int(input('Quantas fichas você quer apostar? '))
+                possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Field, Any Craps, Twelve):  ')
+                dado_5 = randint(1,6)
+                dado_6 = randint(1,6)
+                soma_dados3 = dado_5 + dado_6
+                print('Você sorteou os valores {0} e {1}, e a soma deles é {2}'.format(dado_5, dado_6, soma_dados3))
+                if possibilidade_de_aposta == 'Field':
+                    print('Você escolheu Field')
+                    if soma_dados3 == 5 or soma_dados3 == 6 or soma_dados3 == 7 or soma_dados3 == 8:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO')
+                        else:
+                            print('Acabou a rodada!')
+                    elif soma_dados3 == 3 or soma_dados3 == 4 or soma_dados3 == 9 or soma_dados3 == 10 or soma_dados3 == 11:
+                        fichas = fichas + valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                    elif soma_dados3 == 2:
+                        fichas = fichas + 2*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')    
+                    else:
+                        fichas = fichas + 3*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                elif possibilidade_de_aposta == 'Any Craps':
+                    print('Você escolheu Any Craps')
+                    if soma_dados3 == 2 or soma_dados3 == 3 or soma_dados3 == 12:
+                        fichas = fichas + 7*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                    else:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO!')
+                        else:
+                            print('Acabou a rodada!')
+                elif possibilidade_de_aposta == 'Twelve':
+                    print('Você escolheu Twelve')
+                    if soma_dados3 == 12:
+                        fichas = fichas + 30*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                    else:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO!')
+                        else:
+                            print('Acabou a rodada!')
+
+
+
+                                             
         else:
             print('Você saiu do jogo')
             jogo = False
+            primeira_rodada = False
+            demais_rodadas = False
+
+
+
 
 if jogo == False:
     print('FIM DO JOGO')
-    
