@@ -1,3 +1,4 @@
+print('Iniciando o jogo Craps')
 from random import randint
 print('INÍCIO DO JOGO')
 primeira_rodada = True
