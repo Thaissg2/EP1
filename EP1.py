@@ -1,4 +1,3 @@
-print('Iniciando o jogo Craps')
 from random import randint
 print('INÍCIO DO JOGO')
 primeira_rodada = True
@@ -436,3 +435,4 @@ while demais_rodadas:
                         print('Você saiu do jogo')
                         print ('FIM DO JOGO')
                         demais_rodadas = False
+print('Fim')
