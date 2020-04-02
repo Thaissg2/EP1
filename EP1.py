@@ -75,4 +75,5 @@ while jogo:
 
     while Point:
         possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet, Field, Any Craps, Twelve):  ')
+        
     
