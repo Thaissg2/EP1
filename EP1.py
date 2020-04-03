@@ -1,23 +1,23 @@
 from random import randint
-print('INÍCIO DO JOGO')
-primeira_rodada = True
-jogo = True
-fichas = 100
-print('Você possui {0} fichas'.format(fichas))
+#Requisitos para o jogo
+primeira_rodada = True 
 Pass_Line_Point = True
 Pass_Line_Point2 = True
 demais_rodadas = True
-
+jogo = True
+print('INÍCIO DO JOGO')
+fichas = 100
+print('Você possui {0} fichas'.format(fichas))
 
 while jogo:
 #Primeira rodada do jogo
     while primeira_rodada:
         print('Primeira rodada. Você está na fase Come Out')
         valor_apostado = int(input('Quantas fichas você quer apostar? '))
-        possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet, Field, Any Craps, Twelve):  ')
         dado_1 = randint(1,6)
         dado_2 = randint(1,6)
         soma_dados1 = dado_1 + dado_2
+        possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet, Field, Any Craps, Twelve):  ')
         print('Você sorteou os valores {0} e {1}, e a soma deles é {2}'.format(dado_1, dado_2, soma_dados1))
         if possibilidade_de_aposta == 'Field':
             print('Você escolheu Field')
@@ -41,7 +41,6 @@ while jogo:
                 fichas = fichas + 3*valor_apostado
                 print('Você ganhou e agora possui {0} fichas'.format(fichas))
                 primeira_rodada = False
-
         elif possibilidade_de_aposta == 'Any Craps':
             print('Você escolheu Any Craps')
             if soma_dados1 == 2 or soma_dados1 == 3 or soma_dados1 == 12:
@@ -56,11 +55,10 @@ while jogo:
                     print('FIM DO JOGO!')
                 else:
                     primeira_rodada = False
-
         elif possibilidade_de_aposta == 'Twelve':
             print('Você escolheu Twelve')
             if soma_dados1 == 12:
-                fichas = fichas + 30*valor_apostado
+                fichas = fichas + 30 * valor_apostado
                 print('Você ganhou e agora possui {0} fichas'.format(fichas))
                 primeira_rodada = False
             else:
@@ -71,7 +69,6 @@ while jogo:
                     print('FIM DO JOGO!')
                 else:
                     primeira_rodada = False
-
         elif possibilidade_de_aposta == 'Pass Line Bet':
             print('Você escolheu Pass Line Bet')
             if soma_dados1 == 7 or soma_dados1 == 11:
@@ -88,7 +85,7 @@ while jogo:
                     primeira_rodada = False        
             else:
                 while Pass_Line_Point:
-                    print('Você está na fase Point')
+                    print('Você está na fase Point. O novo sorteio é...') 
                     dado_3 = randint(1,6)
                     dado_4 = randint(1,6)
                     soma_dados2 = dado_3 + dado_4
@@ -115,16 +112,16 @@ while jogo:
         print('Acabou a primeira rodada!')
 #Demais Rodadas
     while demais_rodadas:
-        jogando = input('Você quer continuar jogando?')
+        jogando = input('Você quer continuar jogando?  ')
         if jogando == 'Sim':
             fase = input('Você quer jogar em Point ou em Come Out?  ')
             if fase == 'Point':
                 print('Você está jogando na fase Point')
                 valor_apostado = int(input('Quantas fichas você quer apostar? '))
-                possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Field, Any Craps, Twelve):  ')
                 dado_5 = randint(1,6)
                 dado_6 = randint(1,6)
                 soma_dados3 = dado_5 + dado_6
+                possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Field, Any Craps, Twelve):  ')
                 print('Você sorteou os valores {0} e {1}, e a soma deles é {2}'.format(dado_5, dado_6, soma_dados3))
                 if possibilidade_de_aposta == 'Field':
                     print('Você escolheu Field')
@@ -141,17 +138,17 @@ while jogo:
                         print('Você ganhou e agora possui {0} fichas'.format(fichas))
                         print('Acabou a rodada!')
                     elif soma_dados3 == 2:
-                        fichas = fichas + 2*valor_apostado
+                        fichas = fichas + 2 * valor_apostado
                         print('Você ganhou e agora possui {0} fichas'.format(fichas))
                         print('Acabou a rodada!')    
                     else:
-                        fichas = fichas + 3*valor_apostado
+                        fichas = fichas + 3 * valor_apostado
                         print('Você ganhou e agora possui {0} fichas'.format(fichas))
                         print('Acabou a rodada!')
                 elif possibilidade_de_aposta == 'Any Craps':
                     print('Você escolheu Any Craps')
                     if soma_dados3 == 2 or soma_dados3 == 3 or soma_dados3 == 12:
-                        fichas = fichas + 7*valor_apostado
+                        fichas = fichas + 7 * valor_apostado
                         print('Você ganhou e agora possui {0} fichas'.format(fichas))
                         print('Acabou a rodada!')
                     else:
@@ -165,7 +162,7 @@ while jogo:
                 elif possibilidade_de_aposta == 'Twelve':
                     print('Você escolheu Twelve')
                     if soma_dados3 == 12:
-                        fichas = fichas + 30*valor_apostado
+                        fichas = fichas + 30 * valor_apostado
                         print('Você ganhou e agora possui {0} fichas'.format(fichas))
                         print('Acabou a rodada!')
                     else:
@@ -178,10 +175,10 @@ while jogo:
                             print('Acabou a rodada!')
             if fase == 'Come Out':
                 valor_apostado = int(input('Quantas fichas você quer apostar? '))
-                possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet,Field, Any Craps, Twelve):  ')
                 dado_7 = randint(1,6)
                 dado_8 = randint(1,6)
                 soma_dados4 = dado_7 + dado_8
+                possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet,Field, Any Craps, Twelve):  ')
                 print('Você sorteou os valores {0} e {1}, e a soma deles é {2}'.format(dado_7, dado_8, soma_dados4))
                 if possibilidade_de_aposta == 'Field':
                     print('Você escolheu Field')
@@ -250,7 +247,7 @@ while jogo:
                             print('Acabou a rodada!')                      
                     else:
                         while Pass_Line_Point2:
-                            print('Você está na fase Point')
+                            print('Você está na fase Point. O novo sorteio é...')
                             dado_9 = randint(1,6)
                             dado_10 = randint(1,6)
                             soma_dados5 = dado_9 + dado_10
