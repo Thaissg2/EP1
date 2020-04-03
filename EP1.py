@@ -238,11 +238,13 @@ while jogo:
                     if soma_dados4 == 7 or soma_dados4 == 11:
                         fichas = fichas + valor_apostado
                         print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
                     elif soma_dados4 == 2 or soma_dados4 == 3 or soma_dados4 ==12:
                         fichas = fichas - valor_apostado
                         print('Você perdeu e agora possui {0} fichas'.format(fichas))
                         if fichas <= 0:
                             demais_rodadas = False
+                            jogo = False
                             print('FIM DO JOGO!')
                         else:
                             print('Acabou a rodada!')                      
@@ -263,6 +265,7 @@ while jogo:
                                 Pass_Line_Point2 = False
                                 if fichas <= 0:
                                     demais_rodadas = False
+                                    jogo = False
                                     print('FIM DO JOGO!')                                  
                                 else:
                                     print('Acabou a rodada!')
@@ -270,7 +273,9 @@ while jogo:
                                 fichas = fichas
                                 print('Você continua com {0} fichas'.format(fichas))
                                 print('Os dados serão sorteados novamente!')
-                                Pass_Line_Point2 = True   
+                                Pass_Line_Point2 = True 
+                        if Pass_Line_Point2 == False:
+                            demais_rodadas = True 
         else:
             print('Você saiu do jogo')
             jogo = False
