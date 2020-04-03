@@ -5,6 +5,8 @@ jogo = True
 fichas = 100
 print('Você possui {0} fichas'.format(fichas))
 Pass_Line_Point = True
+Pass_Line_Point2 = True
+demais_rodadas = True
 
 
 while jogo:
@@ -174,18 +176,105 @@ while jogo:
                             print('FIM DO JOGO!')
                         else:
                             print('Acabou a rodada!')
-
-
-
-                                             
+            if fase == 'Come Out':
+                valor_apostado = int(input('Quantas fichas você quer apostar? '))
+                possibilidade_de_aposta = input('Qual tipo de aposta você quer? (Pass Line Bet,Field, Any Craps, Twelve):  ')
+                dado_7 = randint(1,6)
+                dado_8 = randint(1,6)
+                soma_dados4 = dado_7 + dado_8
+                print('Você sorteou os valores {0} e {1}, e a soma deles é {2}'.format(dado_7, dado_8, soma_dados4))
+                if possibilidade_de_aposta == 'Field':
+                    print('Você escolheu Field')
+                    if soma_dados4 == 5 or soma_dados4 == 6 or soma_dados4 == 7 or soma_dados4 == 8:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO')
+                        else:
+                            print('Acabou a rodada!')
+                    elif soma_dados4 == 3 or soma_dados4 == 4 or soma_dados4 == 9 or soma_dados4 == 10 or soma_dados4 == 11:
+                        fichas = fichas + valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                    elif soma_dados4 == 2:
+                        fichas = fichas + 2*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')    
+                    else:
+                        fichas = fichas + 3*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                elif possibilidade_de_aposta == 'Any Craps':
+                    print('Você escolheu Any Craps')
+                    if soma_dados4 == 2 or soma_dados4 == 3 or soma_dados4 == 12:
+                        fichas = fichas + 7*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                    else:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO!')
+                        else:
+                            print('Acabou a rodada!')
+                elif possibilidade_de_aposta == 'Twelve':
+                    print('Você escolheu Twelve')
+                    if soma_dados4 == 12:
+                        fichas = fichas + 30*valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                        print('Acabou a rodada!')
+                    else:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO!')
+                        else:
+                            print('Acabou a rodada!')
+                elif possibilidade_de_aposta == 'Pass Line Bet':
+                    print('Você escolheu Pass Line Bet')
+                    if soma_dados4 == 7 or soma_dados4 == 11:
+                        fichas = fichas + valor_apostado
+                        print('Você ganhou e agora possui {0} fichas'.format(fichas))
+                    elif soma_dados4 == 2 or soma_dados4 == 3 or soma_dados4 ==12:
+                        fichas = fichas - valor_apostado
+                        print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                        if fichas <= 0:
+                            demais_rodadas = False
+                            print('FIM DO JOGO!')
+                        else:
+                            print('Acabou a rodada!')                      
+                    else:
+                        while Pass_Line_Point2:
+                            print('Você está na fase Point')
+                            dado_9 = randint(1,6)
+                            dado_10 = randint(1,6)
+                            soma_dados5 = dado_9 + dado_10
+                            print('Você sorteou os valores {0} e {1}, e a soma deles é {2}'.format(dado_9, dado_10, soma_dados5))
+                            if soma_dados5 == soma_dados4:
+                                fichas = fichas + valor_apostado
+                                Pass_Line_Point2 = False
+                                primeira_rodada = False
+                            elif soma_dados5 == 7:
+                                fichas = fichas - valor_apostado
+                                print('Você perdeu e agora possui {0} fichas'.format(fichas))
+                                Pass_Line_Point2 = False
+                                if fichas <= 0:
+                                    demais_rodadas = False
+                                    print('FIM DO JOGO!')                                  
+                                else:
+                                    print('Acabou a rodada!')
+                            else:
+                                fichas = fichas
+                                print('Você continua com {0} fichas'.format(fichas))
+                                print('Os dados serão sorteados novamente!')
+                                Pass_Line_Point2 = True   
         else:
             print('Você saiu do jogo')
             jogo = False
             primeira_rodada = False
             demais_rodadas = False
-
-
-
-
 if jogo == False:
     print('FIM DO JOGO')
